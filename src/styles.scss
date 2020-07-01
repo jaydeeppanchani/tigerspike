@@ -1,1 +1,78 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+
+$brand-primary: rgb(235, 235, 235);
+$brand-body : #fff;
+$brand-Footer : rgb(94, 94, 94);
+
+html,
+body {
+  height: 100%;
+  // overflow: hidden;
+}
+
+#page-content {
+  flex: 1 0 auto;
+}
+
+#sticky-footer {
+  flex-shrink: none !important;
+  background-color : $brand-Footer
+}
+
+body {
+  background: $brand-body;
+}
+
+.navbar {
+    background-color : $brand-primary
+}
+
+#sticky-footers{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    
+}
+@media (min-width: 1200px){
+    // .container {
+    //     max-width: 1540px;
+    // }
+}
+.mrb-10{
+    margin-bottom: 10px;
+}
+.mrb-20{
+    margin-bottom: 20px;
+}
+.mrt-10{
+    margin-top: 10px;
+}
+.mrt-15{
+    margin-top: 15px;
+}
+.mrt-20{
+    margin-top: 20px;
+}
+  
+.noPadding{
+    padding: 0px !important;
+}
+.navbar-expand-md .navbar-collapse {
+    display: flex !important;
+    flex-basis: auto !important;
+}
+
+.outerCard{
+    background: rgb(250, 250, 250);
+}
+.loginCard {
+    padding: 15px 15px 15px 15px;
+}
+.card{
+    background: rgb(242, 242, 242);
+    border: 0px solid;
+}
+.notMember{
+    margin: auto;
+}

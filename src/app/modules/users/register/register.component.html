@@ -1,0 +1,138 @@
+
+<body class="d-flex flex-column">
+    <app-header></app-header>
+    <!-- Login Component -fuild-->
+    <div id="page-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-12">
+                    <h1>Register</h1>
+                    <p>Create an account and get started today.</p>
+                </div>
+                <div class="col-md-12 col-sm-12 col-12 outerCard">
+                    <div class="row">
+                        <div class="col-md-8 loginCard">
+                            <div class="card">
+                                <div class="card-body">
+                                    <form [formGroup]="registerForm" (ngSubmit)="register()"  autocomplete="off">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="position-relative form-group">
+                                                    <label class="form-label"> Forename <span class="form-required">*</span></label>
+                                                    <input type="text" class="form-control" id="foreName" name="foreName" formControlName="foreName"
+                                                    [ngClass]="{ 'is-invalid': submitted && registerForm.get('foreName').errors}" placeholder="Forename">
+                                                    <div class="invalid-feedback" *ngIf="registerForm.get('foreName').hasError('required')"> Please enter this information </div>
+                                                    <div class="invalid-feedback" *ngIf="registerForm.get('foreName').hasError('maxlength')"> Username length reached maximum </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="position-relative form-group">
+                                                    <label class="form-label"> Surname <span class="form-required">*</span></label>
+                                                    <input type="text" class="form-control" id="surName" name="surName" formControlName="surName"
+                                                    [ngClass]="{ 'is-invalid': submitted && registerForm.get('surName').errors}" placeholder="Surname">
+                                                    <div class="invalid-feedback" *ngIf="registerForm.get('surName').hasError('required')"> Please enter this information </div>
+                                                    <div class="invalid-feedback" *ngIf="registerForm.get('surName').hasError('maxlength')"> Username length reached maximum </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="position-relative form-group">
+                                                    <label class="form-label"> Sex <span class="form-required">*</span></label>
+                                                    <select id="sex" name="sex" class="form-control" [ngClass]="{ 'is-invalid': submitted && registerForm.get('sex').errors}" formControlName="sex">
+                                                        <option value="1">Male</option>
+                                                        <option value="2">Female</option>
+                                                    </select>
+
+                                                    <div class="invalid-feedback" *ngIf="registerForm.get('sex').hasError('required')"> Please enter this information </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="position-relative form-group">
+                                                    <label class="form-label"> Date of birth <span class="form-required">*</span></label>
+                                                    <input type="text" class="form-control" id="dob" name="dob" formControlName="dob"
+                                                    [ngClass]="{ 'is-invalid': submitted && registerForm.get('dob').errors}" placeholder="Date of birth">
+                                                    <div class="invalid-feedback" *ngIf="registerForm.get('dob').hasError('required')"> Please enter this information </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="position-relative form-group">
+                                                    <label class="form-label"> Email Address <span class="form-required">*</span></label>
+                                                    <input type="text" class="form-control" id="email" name="email" formControlName="email"
+                                                    [ngClass]="{ 'is-invalid': submitted && registerForm.get('email').errors}" placeholder="Email Address">
+                                                    <div class="invalid-feedback" *ngIf="registerForm.get('email').hasError('required')"> Please enter this information </div>
+                                                    <div class="invalid-feedback" *ngIf="registerForm.get('email').hasError('email')"> Please enter valid email address </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="position-relative form-group">
+                                                    <label class="form-label"> Verify Email Address <span class="form-required">*</span></label>
+                                                    <input type="text" class="form-control" id="confirmEmail" name="confirmEmail" formControlName="confirmEmail"
+                                                    [ngClass]="{ 'is-invalid': submitted && registerForm.get('confirmEmail').errors}" placeholder="Verify Email Address">
+                                                    <div class="invalid-feedback" *ngIf="registerForm.get('confirmEmail').hasError('required')"> Please enter this information </div>
+                                                    <div class="invalid-feedback" *ngIf="registerForm.get('confirmEmail').hasError('email')"> Please enter valid email address </div>
+                                                    <div class="invalid-feedback" *ngIf="registerForm.get('confirmEmail').hasError('mustMatch')"> Email could not verify </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">  
+                                            <div class="col-md-10 col-sm-10 col-10">
+                                                <div class="position-relative form-group">
+                                                    <label class="form-label">Password</label>
+                                                    <input type="{{getPasswordInputType()}}" id="password" name="password" class="form-control" formControlName="password" 
+                                                    [ngClass]="{ 'is-invalid': submitted && registerForm.get('password').errors}" placeholder="Password">
+                                                    <div>Use between 7 - 25 characters. At least one uppercase character. At least one number.</div>
+                                                    <div class="invalid-feedback" *ngIf="registerForm.get('password').hasError('required')"> Please enter this information </div>
+                                                    <div class="invalid-feedback" *ngIf="registerForm.get('password').hasError('minlength')"> Password length is to less </div>
+                                                    <div class="invalid-feedback" *ngIf="registerForm.get('password').hasError('maxlength')"> Password length reached maximum </div>
+                                                    <div class="invalid-feedback" *ngIf="registerForm.get('password').hasError('invalidPassword')"> Invalid Password Pattern </div>
+                                                    
+                                                    <!-- maxlength -->
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2 col-sm-2 col-2">
+                                                <div class="position-relative form-group">
+                                                    <label class="form-label">&nbsp;</label>
+                                                    <div class="custom-checkbox custom-control">
+                                                        <input type="checkbox" id="showPass" class="custom-control-input" (click)="toggelShowPassword()">
+                                                        <label class="custom-control-label" for="showPass">{{getShowPasswordLabel()}}</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="float-right">
+                                                    <button class="btn  btn-secondary btn-raised" type="submit">Register</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                                                                
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 notMember">
+                            <div class="">
+                                <p>Already a member?</p>
+                                <button type="button" class="btn btn-raised btn-secondary" [routerLink]=" ['/'] " >Login</button>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-footer></app-footer>
+</body>
